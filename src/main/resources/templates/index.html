@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Enterprise X</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Empresa X</div>
+        <br/>
+        <a th:href="@{/agregar}">Crear Cliente</a>
+        <div th:if="${clientes != null and !clientes.empty}">
+            <table border="1">
+                <tr>
+                    <th>Nombre:</th>
+                    <th>Apellido:</th>
+                    <th>Telefono:</th>
+                    <th>Direccion Casa:</th>
+                    <th>Direccion Trabajo:</th>
+                    <th>Editar:</th>
+                    <th>Eliminar:</th>
+                    
+                </tr>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.nombre}">Mostrar Nombre</td>                
+                    <td th:text="${cliente.apellido}">Mostrar Apellido</td>                
+                    <td th:text="${cliente.telefono}">Mostrar Telefono</td>                
+                    <td th:text="${cliente.direccionCasa}">Mostrar Direccion Casa</td>                
+                    <td th:text="${cliente.direccionTrabajo}">Mostrar Direccion Trabajo</td>
+                    <td><a th:href="@{/editar/} + ${cliente.idusuarios}" th:text="Editar"/></td>
+                    <td><a th:href="@{/eliminar/} + ${cliente.idusuarios}" th:text="Eliminar"/></td>
+                    
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
